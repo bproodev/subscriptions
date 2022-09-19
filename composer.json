@@ -1,6 +1,6 @@
 {
-    "name": "rinvex/laravel-subscriptions",
-    "description": "Rinvex Subscriptions is a flexible plans and subscription management system for Laravel, with the required tools to run your SAAS like services efficiently. It's simple architecture, accompanied by powerful underlying to afford solid platform for your business.",
+    "name": "bproodev/subscriptions",
+    "description": "BprooDev Subscriptions is a flexible plans and subscription management system for Laravel, with the required tools to run your SAAS like services efficiently. It's simple architecture, accompanied by powerful underlying to afford solid platform for your business.",
     "type": "library",
     "keywords": [
         "plan",
@@ -12,28 +12,24 @@
         "subscription"
     ],
     "license": "MIT",
-    "homepage": "https://rinvex.com",
+    "homepage": "https://bproodev.com",
     "support": {
-        "email": "help@rinvex.com",
-        "issues": "https://github.com/rinvex/laravel-subscriptions/issues",
-        "source": "https://github.com/rinvex/laravel-subscriptions",
-        "docs": "https://github.com/rinvex/laravel-subscriptions/blob/master/README.md"
+        "email": "bproodev@gmail.com",
+        "issues": "https://github.com/bproodev/subscriptions/issues",
+        "source": "https://github.com/bproodev/subscriptions",
+        "docs": "https://github.com/bproodev/subscriptions/blob/master/README.md"
     },
     "authors": [
         {
-            "name": "Rinvex LLC",
-            "homepage": "https://rinvex.com",
-            "email": "help@rinvex.com"
+            "name": "BprooDev Ltd",
+            "homepage": "https://bproodev.com",
+            "email": "bproodev@gmail.com"
         },
         {
-            "name": "Abdelrahman Omran",
-            "homepage": "https://omranic.com",
-            "email": "me@omranic.com",
+            "name": "Duplex Kamdjou",
+            "homepage": "https://kamdjouduplex.github.io/resume-digital/",
+            "email": "kamdjouduplex@gmail.com",
             "role": "Project Lead"
-        },
-        {
-            "name": "The Generous Laravel Community",
-            "homepage": "https://github.com/rinvex/laravel-subscriptions/contributors"
         }
     ],
     "require": {
@@ -41,24 +37,23 @@
         "illuminate/console": "^9.0.0 || ^10.0.0",
         "illuminate/database": "^9.0.0 || ^10.0.0",
         "illuminate/support": "^9.0.0 || ^10.0.0",
-        "rinvex/laravel-support": "^6.0.0",
-        "spatie/eloquent-sortable": "^4.0.0",
-        "spatie/laravel-sluggable": "^3.3.0",
-        "spatie/laravel-translatable": "^5.2.0"
+        "rinvex/laravel-support": "^6.1.2",
+        "spatie/eloquent-sortable": "^4.0.1",
+        "spatie/laravel-sluggable": "^3.4.0",
+        "spatie/laravel-translatable": "^6.0.0"
     },
     "require-dev": {
-        "codedungeon/phpunit-result-printer": "^0.31.0",
-        "illuminate/container": "^9.0.0 || ^10.0.0",
-        "phpunit/phpunit": "^9.5.0"
+        "illuminate/container": "^8.83.22",
+        "phpunit/phpunit": "^9.5.24"
     },
     "autoload": {
         "psr-4": {
-            "Rinvex\\Subscriptions\\": "src"
+            "BprooDev\\Subscriptions\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Rinvex\\Subscriptions\\Tests\\": "tests"
+            "BprooDev\\Subscriptions\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -72,7 +67,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Rinvex\\Subscriptions\\Providers\\SubscriptionsServiceProvider"
+                "BprooDev\\Subscriptions\\Providers\\SubscriptionsServiceProvider"
             ]
         }
     },

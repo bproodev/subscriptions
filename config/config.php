@@ -20,10 +20,10 @@ return [
     // Subscriptions Models
     'models' => [
 
-        'plan' => \Rinvex\Subscriptions\Models\Plan::class,
-        'plan_feature' => \Rinvex\Subscriptions\Models\PlanFeature::class,
-        'plan_subscription' => \Rinvex\Subscriptions\Models\PlanSubscription::class,
-        'plan_subscription_usage' => \Rinvex\Subscriptions\Models\PlanSubscriptionUsage::class,
+        'plan' => \BprooDev\Subscriptions\Models\Plan::class,
+        'plan_feature' => \BprooDev\Subscriptions\Models\PlanFeature::class,
+        'plan_subscription' => \BprooDev\Subscriptions\Models\PlanSubscription::class,
+        'plan_subscription_usage' => \BprooDev\Subscriptions\Models\PlanSubscriptionUsage::class,
 
     ],
 

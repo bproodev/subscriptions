@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rinvex\Subscriptions\Services;
+namespace BprooDev\Subscriptions\Services;
 
 use Carbon\Carbon;
 

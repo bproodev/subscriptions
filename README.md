@@ -1,18 +1,20 @@
-# Rinvex Subscriptions
+# BprooDev Subscriptions
 
-⚠️ This package is abandoned and no longer maintained. No replacement package was suggested. ⚠️
+⚠️ This package is an updated version of the [rinvex/laravel-subsscription](https://packagist.org/packages/rinvex/laravel-subscriptions) package, I just make it work with laravel 8 and laravel 9 ⚠️
+
+**Note:** It's not a substitue of it. But just for those who are trying to make it work on Laravel 8 and laravel 9.
 
 👉 If you are interested to step on as the main maintainer of this package, please [reach out to me](https://twitter.com/omranic)!
 
 ---
 
-**Rinvex Subscriptions** is a flexible plans and subscription management system for Laravel, with the required tools to run your SAAS like services efficiently. It's simple architecture, accompanied by powerful underlying to afford solid platform for your business.
+**BprooDev Subscriptions** is a flexible plans and subscription management system for Laravel, with the required tools to run your SAAS like services efficiently. It's simple architecture, accompanied by powerful underlying to afford solid platform for your business.
 
-[![Packagist](https://img.shields.io/packagist/v/rinvex/laravel-subscriptions.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/rinvex/laravel-subscriptions)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/rinvex/laravel-subscriptions.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/rinvex/laravel-subscriptions/)
-[![Travis](https://img.shields.io/travis/rinvex/laravel-subscriptions.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/rinvex/laravel-subscriptions)
+[![Packagist](https://img.shields.io/packagist/v/bproodev/laravel-subscriptions.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/bproodev/laravel-subscriptions)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/bproodev/laravel-subscriptions.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/bproodev/laravel-subscriptions/)
+[![Travis](https://img.shields.io/travis/bproodev/laravel-subscriptions.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/bproodev/laravel-subscriptions)
 [![StyleCI](https://styleci.io/repos/93313402/shield)](https://styleci.io/repos/93313402)
-[![License](https://img.shields.io/packagist/l/rinvex/laravel-subscriptions.svg?label=License&style=flat-square)](https://github.com/rinvex/laravel-subscriptions/blob/develop/LICENSE)
+[![License](https://img.shields.io/packagist/l/bproodev/laravel-subscriptions.svg?label=License&style=flat-square)](https://github.com/bproodev/laravel-subscriptions/blob/develop/LICENSE)
 
 
 ## Considerations
@@ -25,17 +27,17 @@
 
 1. Install the package via composer:
     ```shell
-    composer require rinvex/laravel-subscriptions
+    composer require bproodev/laravel-subscriptions
     ```
 
 2. Publish resources (migrations and config files):
     ```shell
-    php artisan rinvex:publish:subscriptions
+    php artisan bproodev:publish:subscriptions
     ```
 
 3. Execute migrations via the following command:
     ```shell
-    php artisan rinvex:migrate:subscriptions
+    php artisan bproodev:migrate:subscriptions
     ```
 
 4. Done!
@@ -45,12 +47,12 @@
 
 ### Add Subscriptions to User model
 
-**Rinvex Subscriptions** has been specially made for Eloquent and simplicity has been taken very serious as in any other Laravel related aspect. To add Subscription functionality to your User model just use the `\Rinvex\Subscriptions\Traits\HasPlanSubscriptions` trait like this:
+**BprooDev Subscriptions** has been specially made for Eloquent and simplicity has been taken very serious as in any other Laravel related aspect. To add Subscription functionality to your User model just use the `\BprooDev\Subscriptions\Traits\HasPlanSubscriptions` trait like this:
 
 ```php
 namespace App\Models;
 
-use Rinvex\Subscriptions\Traits\HasPlanSubscriptions;
+use BprooDev\Subscriptions\Traits\HasPlanSubscriptions;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -66,7 +68,7 @@ That's it, we only have to use that trait in our User model! Now your users may 
 ### Create a Plan
 
 ```php
-$plan = app('rinvex.subscriptions.plan')->create([
+$plan = app('bproodev.subscriptions.plan')->create([
     'name' => 'Pro',
     'description' => 'Pro plan',
     'price' => 9.99,
@@ -93,7 +95,7 @@ $plan->features()->saveMany([
 You can query the plan for further details, using the intuitive API as follows:
 
 ```php
-$plan = app('rinvex.subscriptions.plan')->find(1);
+$plan = app('bproodev.subscriptions.plan')->find(1);
 
 // Get all plan features                
 $plan->features;
@@ -122,10 +124,10 @@ Say you want to show the value of the feature _pictures_per_listing_ from above.
 $amountOfPictures = $plan->getFeatureBySlug('pictures_per_listing')->value;
 
 // Query the feature itself directly
-$amountOfPictures = app('rinvex.subscriptions.plan_feature')->where('slug', 'pictures_per_listing')->first()->value;
+$amountOfPictures = app('bproodev.subscriptions.plan_feature')->where('slug', 'pictures_per_listing')->first()->value;
 
 // Get feature value through the subscription instance
-$amountOfPictures = app('rinvex.subscriptions.plan_subscription')->find(1)->getFeatureValue('pictures_per_listing');
+$amountOfPictures = app('bproodev.subscriptions.plan_subscription')->find(1)->getFeatureValue('pictures_per_listing');
 ```
 
 ### Create a Subscription
@@ -134,7 +136,7 @@ You can subscribe a user to a plan by using the `newSubscription()` function ava
 
 ```php
 $user = User::find(1);
-$plan = app('rinvex.subscriptions.plan')->find(1);
+$plan = app('bproodev.subscriptions.plan')->find(1);
 
 $user->newPlanSubscription('main', $plan);
 ```
@@ -146,8 +148,8 @@ The first argument passed to `newSubscription` method should be the title of the
 You can change subscription plan easily as follows:
 
 ```php
-$plan = app('rinvex.subscriptions.plan')->find(2);
-$subscription = app('rinvex.subscriptions.plan_subscription')->find(1);
+$plan = app('bproodev.subscriptions.plan')->find(2);
+$subscription = app('bproodev.subscriptions.plan_subscription')->find(1);
 
 // Change subscription plan
 $subscription->changePlan($plan);
@@ -161,7 +163,7 @@ Plan features are great for fine-tuning subscriptions, you can top-up certain fe
 
 ```php
 // Find plan feature
-$feature = app('rinvex.subscriptions.plan_feature')->where('name', 'listing_duration_days')->first();
+$feature = app('bproodev.subscriptions.plan_feature')->where('name', 'listing_duration_days')->first();
 
 // Get feature reset date
 $feature->getResetDate(new \Carbon\Carbon());
@@ -273,34 +275,34 @@ $user->planSubscription('main')->cancel(true);
 
 ```php
 // Get subscriptions by plan
-$subscriptions = app('rinvex.subscriptions.plan_subscription')->byPlanId($plan_id)->get();
+$subscriptions = app('bproodev.subscriptions.plan_subscription')->byPlanId($plan_id)->get();
 
 // Get bookings of the given user
 $user = \App\Models\User::find(1);
-$bookingsOfSubscriber = app('rinvex.subscriptions.plan_subscription')->ofSubscriber($user)->get(); 
+$bookingsOfSubscriber = app('bproodev.subscriptions.plan_subscription')->ofSubscriber($user)->get(); 
 
 // Get subscriptions with trial ending in 3 days
-$subscriptions = app('rinvex.subscriptions.plan_subscription')->findEndingTrial(3)->get();
+$subscriptions = app('bproodev.subscriptions.plan_subscription')->findEndingTrial(3)->get();
 
 // Get subscriptions with ended trial
-$subscriptions = app('rinvex.subscriptions.plan_subscription')->findEndedTrial()->get();
+$subscriptions = app('bproodev.subscriptions.plan_subscription')->findEndedTrial()->get();
 
 // Get subscriptions with period ending in 3 days
-$subscriptions = app('rinvex.subscriptions.plan_subscription')->findEndingPeriod(3)->get();
+$subscriptions = app('bproodev.subscriptions.plan_subscription')->findEndingPeriod(3)->get();
 
 // Get subscriptions with ended period
-$subscriptions = app('rinvex.subscriptions.plan_subscription')->findEndedPeriod()->get();
+$subscriptions = app('bproodev.subscriptions.plan_subscription')->findEndedPeriod()->get();
 ```
 
 ### Models
 
-**Rinvex Subscriptions** uses 4 models:
+**bproodev Subscriptions** uses 4 models:
 
 ```php
-Rinvex\Subscriptions\Models\Plan;
-Rinvex\Subscriptions\Models\PlanFeature;
-Rinvex\Subscriptions\Models\PlanSubscription;
-Rinvex\Subscriptions\Models\PlanSubscriptionUsage;
+BprooDev\Subscriptions\Models\Plan;
+BprooDev\Subscriptions\Models\PlanFeature;
+BprooDev\Subscriptions\Models\PlanSubscription;
+BprooDev\Subscriptions\Models\PlanSubscriptionUsage;
 ```
 
 
@@ -325,9 +327,9 @@ Refer to the [Changelog](CHANGELOG.md) for a full history of the project.
 
 The following support channels are available at your fingertips:
 
-- [Chat on Slack](https://bit.ly/rinvex-slack)
-- [Help on Email](mailto:help@rinvex.com)
-- [Follow on Twitter](https://twitter.com/rinvex)
+- [Chat on Slack](https://bit.ly/bproodev-slack)
+- [Help on Email](mailto:bproodev@gmail.com)
+- [Follow on Twitter](https://twitter.com/bproodev)
 
 
 ## Contributing & Protocols
@@ -345,16 +347,17 @@ Bug reports, feature requests, and pull requests are very welcome.
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within this project, please send an e-mail to [help@rinvex.com](help@rinvex.com). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within this project, please send an e-mail to [bproodev@gmail.com](bproodev@gmail.com). All security vulnerabilities will be promptly addressed.
 
 
-## About Rinvex
+## About BprooDev
 
-Rinvex is a software solutions startup, specialized in integrated enterprise solutions for SMEs established in Alexandria, Egypt since June 2016. We believe that our drive The Value, The Reach, and The Impact is what differentiates us and unleash the endless possibilities of our philosophy through the power of software. We like to call it Innovation At The Speed Of Life. That’s how we do our share of advancing humanity.
+BprooDev is a primary an educational program aim to bring more afro into tech through it mentoring platforme and quality content at a very ofordable price.
+We take you from beginner or intermediate level to professional level.
 
 
 ## License
 
 This software is released under [The MIT License (MIT)](LICENSE).
 
-(c) 2016-2022 Rinvex LLC, Some rights reserved.
+(c) 2016-2022 BprooDev LTD, Some rights reserved.

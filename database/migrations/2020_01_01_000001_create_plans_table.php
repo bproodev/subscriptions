@@ -14,13 +14,13 @@ class CreatePlansTable extends Migration
      */
     public function up(): void
     {
-        Schema::create(config('rinvex.subscriptions.tables.plans'), function (Blueprint $table) {
+        Schema::create(config('bproodev.subscriptions.tables.plans'), function (Blueprint $table) {
             // Columns
             $table->increments('id');
-            $table->string('slug');
-            $table->json('name');
-            $table->json('description')->nullable();
-            $table->boolean('is_active')->default(true);
+            $table->string('slug', 150);
+            $table->string('name', 150);
+            $table->text('description')->nullable();
+            $table->boolean('is_active')->default(false);
             $table->decimal('price')->default('0.00');
             $table->decimal('signup_fee')->default('0.00');
             $table->string('currency', 3);
@@ -50,6 +50,6 @@ class CreatePlansTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(config('rinvex.subscriptions.tables.plans'));
+        Schema::dropIfExists(config('bproodev.subscriptions.tables.plans'));
     }
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rinvex\Subscriptions\Models;
+namespace BprooDev\Subscriptions\Models;
 
 use Spatie\Sluggable\SlugOptions;
 use Rinvex\Support\Traits\HasSlug;
@@ -173,9 +173,9 @@ class Plan extends Model implements Sortable
      */
     public function __construct(array $attributes = [])
     {
-        $this->setTable(config('rinvex.subscriptions.tables.plans'));
+        $this->setTable(config('bproodev.subscriptions.tables.plans'));
         $this->mergeRules([
-            'slug' => 'required|alpha_dash|max:150|unique:'.config('rinvex.subscriptions.tables.plans').',slug',
+            'slug' => 'required|alpha_dash|max:150|unique:'.config('bproodev.subscriptions.tables.plans').',slug',
             'name' => 'required|string|strip_tags|max:150',
             'description' => 'nullable|string|max:32768',
             'is_active' => 'sometimes|boolean',
@@ -231,7 +231,7 @@ class Plan extends Model implements Sortable
      */
     public function features(): HasMany
     {
-        return $this->hasMany(config('rinvex.subscriptions.models.plan_feature'), 'plan_id', 'id');
+        return $this->hasMany(config('bproodev.subscriptions.models.plan_feature'), 'plan_id', 'id');
     }
 
     /**
@@ -241,7 +241,7 @@ class Plan extends Model implements Sortable
      */
     public function subscriptions(): HasMany
     {
-        return $this->hasMany(config('rinvex.subscriptions.models.plan_subscription'), 'plan_id', 'id');
+        return $this->hasMany(config('bproodev.subscriptions.models.plan_subscription'), 'plan_id', 'id');
     }
 
     /**
@@ -279,7 +279,7 @@ class Plan extends Model implements Sortable
      *
      * @param string $featureSlug
      *
-     * @return \Rinvex\Subscriptions\Models\PlanFeature|null
+     * @return \BprooDev\Subscriptions\Models\PlanFeature|null
      */
     public function getFeatureBySlug(string $featureSlug): ?PlanFeature
     {
