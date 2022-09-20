@@ -4,8 +4,6 @@
 
 **Note:** It's not a substitue of it. But just for those who are trying to make it work on Laravel 8 and laravel 9.
 
-👉 If you are interested to step on as the main maintainer of this package, please [reach out to me](https://twitter.com/omranic)!
-
 ---
 
 **BprooDev Subscriptions** is a flexible plans and subscription management system for Laravel, with the required tools to run your SAAS like services efficiently. It's simple architecture, accompanied by powerful underlying to afford solid platform for your business.
@@ -22,6 +20,19 @@
 - Payments are out of scope for this package.
 - You may want to extend some of the core models, in case you need to override the logic behind some helper methods like `renew()`, `cancel()` etc. E.g.: when cancelling a subscription you may want to also cancel the recurring payment attached.
 
+## Note for Laravel v9
+
+This package requires [rinvex/laravel-support](https://packagist.org/packages/rinvex/laravel-support) which also requires [felixkiss/uniquewith-validator](https://packagist.org/packages/felixkiss/uniquewith-validator) dependency, which is not yet compatible with Laravel v9! However as a temporary workaround, add [Laravel Shift](https://github.com/felixkiss/uniquewith-validator/pull/131)'s fork to the `repositories` property of your project root `composer.json`:
+```json
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/laravel-shift/uniquewith-validator.git"
+        }
+    ]
+}
+```
 
 ## Installation
 
